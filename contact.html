@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact</title>
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){ emailjs.init("YOUR_PUBLIC_KEY"); })();
+
+function sendEmail(e){
+  e.preventDefault();
+  emailjs.sendForm('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID', e.target)
+    .then(()=>alert("Message sent!"), ()=>alert("Error"));
+}
+</script>
+
+</head>
+<body>
+
+<h1>Contact Us</h1>
+
+<form onsubmit="sendEmail(event)">
+<input name="name" placeholder="Name" required><br>
+<input name="email" placeholder="Email" required><br>
+<textarea name="message" placeholder="Message"></textarea><br>
+<button type="submit">Send</button>
+</form>
+
+</body>
+</html>
